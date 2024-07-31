@@ -9,12 +9,16 @@ const jobSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    requirements: {
+    requirements: [{
       type: String,
-    },
+    }],
     salary: {
-      type: String,
+      type: Number,
       required: true,
+    },
+    experienceLavel: {
+      type: Number,
+      required:true,
     },
     location: {
       type: String,
@@ -28,7 +32,7 @@ const jobSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    position: {
+    company: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Company",
       required: true,
