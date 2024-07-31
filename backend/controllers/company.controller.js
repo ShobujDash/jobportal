@@ -45,7 +45,6 @@ export const getCompany = async (req, res) => {
     }
 
     return res.status(200).json({
-      message: "Company",
       companies,
       success: true,
     });
