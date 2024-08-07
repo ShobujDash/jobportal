@@ -28,10 +28,11 @@ function Login() {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-
+ 
   // submite handler
   const submiteHandler = async (e) => {
     e.preventDefault();
+    console.log(input)
     try {
       dispatch(setLoading(true))
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
@@ -56,7 +57,7 @@ function Login() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="flex items-center justify-center max-w-7xl mx-auto">
         <form
           className="w-1/2 border border-gray-200 rounded-md p-4 my-10"
@@ -103,18 +104,18 @@ function Login() {
                 <Input
                   type="radio"
                   name="role"
-                  value="recuiter"
-                  checked={input.role === "recuiter"}
+                  value="recruiter"
+                  checked={input.role === "recruiter"}
                   onChange={changeEventHandler}
                   className="cursor-pointer"
                 />
-                <Label htmlFor="r2">Recruiter</Label>  
+                <Label htmlFor="r2">Recruiter</Label>
               </div>
             </RadioGroup>
           </div>
 
           {loading ? (
-            <Button className='w-full my-4'>
+            <Button className="w-full my-4">
               <Loader2 className="mr-2 h-4 animate-spin" />
               Please wait..
             </Button>
