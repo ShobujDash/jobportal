@@ -20,7 +20,9 @@ function Job({job}) {
     <div className="p-5 rounded-md shadow-2xl bg-white border border-gray-200">
       <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500 bg-white ">
-         {daysAgoFunction(job?.createdAt) == 0 ? "Today" : `${daysAgoFunction(job?.createdAt)} days ago` }
+          {daysAgoFunction(job?.createdAt) == 0
+            ? "Today"
+            : `${daysAgoFunction(job?.createdAt)} days ago`}
         </p>
         <Button variant="outline" className="rounded-full">
           <Bookmark />
@@ -28,28 +30,28 @@ function Job({job}) {
       </div>
 
       <div className="flex items-center gap-2 my-2">
-        <Button className="p-6" variant="outline" size="icons">
+        <Button variant="outline" size="icon">
           <Avatar>
-            <AvatarImage src="https://i.postimg.cc/9XY1hNLb/icons8-company-50.png" />
+            <AvatarImage src={job?.company?.logo} />
           </Avatar>
         </Button>
         <div>
-          <h1 className="font-medium text-lg">{job?.company?.name} name</h1>
+          <h1 className="font-medium text-lg">{job?.company?.name}</h1>
           <p className="text-sm text-gray-500">India</p>
         </div>
       </div>
 
       <div className="">
         <h1 className="font-bold text-lg my-2 ">{job?.title}</h1>
-        <p className="text-sm text-muted-foreground ">
-          {job?.description}
-        </p>
+        <p className="text-sm text-muted-foreground ">{job?.description}</p>
       </div>
 
       <div className="flex items-center gap-2 my-4">
-        <Badge className="text-blue-700 font-bold">{job?.position} Positions</Badge>
-        <Badge className="text-[#F83002] font-bold">{ job?.jobType}</Badge>
-        <Badge className="text-[#7209b7] font-bold">{ job?.salary}LPA</Badge>
+        <Badge className="text-blue-700 font-bold">
+          {job?.position} Positions
+        </Badge>
+        <Badge className="text-[#F83002] font-bold">{job?.jobType}</Badge>
+        <Badge className="text-[#7209b7] font-bold">{job?.salary}LPA</Badge>
       </div>
 
       <div className="flex items-center gap-4 mt-4">

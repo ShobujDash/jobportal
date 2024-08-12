@@ -32,7 +32,6 @@ function Login() {
   // submite handler
   const submiteHandler = async (e) => {
     e.preventDefault();
-    console.log(input)
     try {
       dispatch(setLoading(true))
       const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
