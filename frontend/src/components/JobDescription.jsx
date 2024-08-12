@@ -17,7 +17,6 @@ function JobDescription() {
     singleJob?.applications?.some(
       (application) => application.applicant === user?._id
     ) || false;
-  console.log(isinitiallyApplied)
   const [isApplied, setIsApplied] = useState(isinitiallyApplied);
 
   const { id } = useParams();
@@ -28,7 +27,6 @@ function JobDescription() {
       const res = await axios.get(`${APPLICATION_API_END_POINT}/apply/${id}`, {
         withCredentials: true,
       });
-      console.log(res.data);
       if (res.data.success) {
         setIsApplied(true);
         const updateSigleJob = {
@@ -51,7 +49,6 @@ function JobDescription() {
         const res = await axios.get(`${JOB_API_END_POINT}/get/${id}`, {
           withCredentials: true,
         });
-        console.log(res.data)
         if (res.data.success) {
           dispatch(setSingleJob(res.data.job));
           setIsApplied(
