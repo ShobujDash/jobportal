@@ -3,7 +3,7 @@ import { RadioGroup } from "@/components/ui/radio-group";
 import { USER_API_END_POINT } from "@/utils/constant";
 import { Label } from "@radix-ui/react-label";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import Navbar from "../shared/Navbar";
@@ -15,7 +15,7 @@ import { setLoading } from "@/redux/authSlice";
 function Signup() {
    const navigate = useNavigate();
    const dispatch = useDispatch();
-   const { loading } = useSelector((store) => store.auth);
+   const { loading ,user} = useSelector((store) => store.auth);
 
 
   const [input, setInput] = useState({
@@ -67,6 +67,12 @@ function Signup() {
       dispatch(setLoading(false));
     }
   };
+
+    useEffect(() => {
+      if (user) {
+        navigate("/");
+      }
+    }, []);
 
   return (
     <>

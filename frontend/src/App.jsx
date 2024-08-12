@@ -1,20 +1,18 @@
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Navbar from './components/shared/Navbar'
-import Login from './components/auth/Login'
-import Signup from './components/auth/Signup'
-import Home from './components/Home'
-import Jobs from './components/Jobs'
-import Browse from './components/Browse'
-import Profile from './components/Profile'
-import JobDescription from './components/JobDescription'
-import Companies from './components/admin/Companies'
-import CompanyCreate from './components/admin/CompanyCreate'
-import CompanySetUp from './components/admin/CompanySetUp'
-import AdminJobs from './components/admin/AdminJobs'
-import PostJob from './components/admin/PostJob'
-import Applicants from './components/admin/Applicants'
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AdminJobs from "./components/admin/AdminJobs";
+import Applicants from "./components/admin/Applicants";
+import Companies from "./components/admin/Companies";
+import CompanyCreate from "./components/admin/CompanyCreate";
+import CompanySetUp from "./components/admin/CompanySetUp";
+import PostJob from "./components/admin/PostJob";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import Login from "./components/auth/Login";
+import Signup from "./components/auth/Signup";
+import Browse from "./components/Browse";
+import Home from "./components/Home";
+import JobDescription from "./components/JobDescription";
+import Jobs from "./components/Jobs";
+import Profile from "./components/Profile";
 
 const appRouter = createBrowserRouter([
   {
@@ -48,38 +46,60 @@ const appRouter = createBrowserRouter([
 
   {
     path: "/admin/companies",
-    element: <Companies />,
+    element: (
+      <ProtectedRoute>
+        <Companies />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/companies/create",
-    element: <CompanyCreate />,
+    element: (
+      <ProtectedRoute>
+        <CompanyCreate />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/companies/:id",
-    element: <CompanySetUp />,
+    element: (
+      <ProtectedRoute>
+        <CompanySetUp />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs",
-    element: <AdminJobs />,
+    element: (
+      <ProtectedRoute>
+        <AdminJobs />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs/create",
-    element: <PostJob />,
+    element: (
+      <ProtectedRoute>
+        <PostJob />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/jobs/:id/applicants",
-    element: <Applicants />,
+    element: (
+      <ProtectedRoute>
+        <Applicants />
+      </ProtectedRoute>
+    ),
   },
 ]);
 
 function App() {
-
-
   return (
     <>
-      <RouterProvider router={appRouter}/>
+      <RouterProvider router={appRouter} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
