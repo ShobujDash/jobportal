@@ -3,7 +3,7 @@ import { RadioGroup } from "@/components/ui/radio-group";
 import { USER_API_END_POINT } from "@/utils/constant";
 import { Label } from "@radix-ui/react-label";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ import { Loader2 } from "lucide-react";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector((store) => store.auth);
+  const { loading,user } = useSelector((store) => store.auth);
 
   const [input, setInput] = useState({
     email: "",
@@ -53,6 +53,12 @@ function Login() {
       dispatch(setLoading(false));
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/")
+    }
+  },[])
 
   return (
     <>
