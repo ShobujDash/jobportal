@@ -33,7 +33,6 @@ function JobDescription() {
           ...singleJob,
           applications: [...singleJob.applications, { applicant: user?._id }],
         };
-        console.log(updateSigleJob)
         dispatch(setSingleJob(updateSigleJob));
         toast.success(res.data.message);
       }
