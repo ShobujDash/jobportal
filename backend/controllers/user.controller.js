@@ -102,6 +102,7 @@ export const login = async (req, res) => {
       profile: user.profile,
     };
 
+   
     return res
       .status(200)
       .cookie("token", token, {
@@ -115,6 +116,7 @@ export const login = async (req, res) => {
         success: true,
         user,
       });
+
   } catch (error) {
     console.log(error);
   }
