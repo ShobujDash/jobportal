@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser());
 const corOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://jobportal-nine-iota.vercel.app",
   credentials: true,
 };
 app.use(cors(corOptions));
